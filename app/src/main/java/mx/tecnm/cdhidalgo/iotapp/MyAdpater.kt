@@ -7,9 +7,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
+//el constructor de la clase MyAdpater recibe una matriz dataset con los datos de los sensores y un listener de tipo ItemListener con las acciones a realizar
 class MyAdpater(private val dataset: Array<Array<String?>>?, private val listener: ItemListener):
     RecyclerView.Adapter<MyAdpater.ViewHolder>() {
-
+        //la clase ViewHolder recibe una vista y un listener de tipo ItemListener
+        //el ViewHolder es el encargado de manejar los elementos de la vista
         class ViewHolder(v: View, listener: ItemListener): RecyclerView.ViewHolder(v) {
             var tvItemId: TextView
             var tvItemType: TextView
@@ -33,16 +35,19 @@ class MyAdpater(private val dataset: Array<Array<String?>>?, private val listene
             }
         }
 
+    //la funcion onCreateViewHolder crea una nueva vista a partir del layout item_sensor
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_sensor, parent, false)
         return ViewHolder(v, listener)
     }
 
+    //la funcion getItemCount regresa el numero de elementos en el dataset
     override fun getItemCount(): Int {
         return dataset!!.size
     }
 
+    //la funcion onBindViewHolder asigna los valores de los elementos del dataset a los elementos de la vista
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvItemId.text = dataset!![position][0]
         holder.tvItemName.text = dataset[position][1]

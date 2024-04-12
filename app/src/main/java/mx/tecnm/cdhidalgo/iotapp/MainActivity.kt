@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val url = Uri.parse(Config.URL + "login")
             .buildUpon()
             .build().toString()
-        //peticion de tipo POST
+        //debe crearse una peticion de tipo StringRequest con el metodo POST para la url de login debido al que el servidor siempre devulve un string con el token
         val peticion = object:StringRequest(Request.Method.POST, url, {
             //si la peticion es exitosa el token esta en response
             response ->
